@@ -13,15 +13,15 @@ jobs:
       - run: docker build -t arsalan888/react-test -f ./client/Dockerfile.dev ./client
       - run: docker run -e CI=true arsalan888/react-test npm test
  
-      - run: docker build -t arsalan888/multi-client-10-14 ./client
-      - run: docker build -t arsalan888/multi-nginx-10-14 ./nginx
-      - run: docker build -t arsalan888/multi-server-10-14 ./server
-      - run: docker build -t arsalan888/multi-worker-10-14 ./worker
+      - run: docker build -t arsalan888/multi-client ./client
+      - run: docker build -t arsalan888/multi-nginx ./nginx
+      - run: docker build -t arsalan888/multi-server ./server
+      - run: docker build -t arsalan888/multi-worker ./worker
  
-      - run: docker push arsalan888/multi-client-10-14
-      - run: docker push arsalan888/multi-nginx-10-14
-      - run: docker push arsalan888/multi-server-10-14
-      - run: docker push arsalan888/multi-worker-10-14
+      - run: docker push arsalan888/multi-client
+      - run: docker push arsalan888/multi-nginx
+      - run: docker push arsalan888/multi-server
+      - run: docker push arsalan888/multi-worker
  
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
