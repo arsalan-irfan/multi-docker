@@ -41,14 +41,9 @@ app.get("/", (req, res) => {
 });
 
 app.get("/values/all", async (req, res) => {
-  try {
-    const values = await pgClient.query("SELECT * from values");
+  const values = await pgClient.query("SELECT * from values");
 
-    res.send(values.rows);
-  } catch (error) {
-    console.log(error.message);
-    return res.send("Error occured");
-  }
+  res.send(values.rows);
 });
 
 app.get("/values/current", async (req, res) => {
@@ -71,8 +66,6 @@ app.post("/values", async (req, res) => {
   res.send({ working: true });
 });
 
-const port = process.env.PORT || 5000
-
-app.listen(port, (err) => {
+app.listen(5000, (err) => {
   console.log("Listening");
 });
